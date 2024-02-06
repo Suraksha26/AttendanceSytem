@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attendancesystem-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attendancesystem   # This label should match the one in the template.labels below
+  template:
+    metadata:
+      labels:
+        app: attendancesystem   # This label should match the one in the selector above
+    spec:
+      containers:
+      - name: attendancesystem-container
+        image: your-docker-image:tag
+        ports:
+        - containerPort: 4000
